@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Humanity in the Room</title>
+  <meta name="description" content="Humanity in the Room helps people and organizations use AI in ways that put humans first, through gatherings, education, and advising.">
+  <meta name="theme-color" content="#FFC93C">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://humanityintheroom.org/">
+  <meta property="og:title" content="Humanity in the Room">
+  <meta property="og:description" content="Whatever we build, people belong in the room.">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Young+Serif&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --indigo: #2E2A4F;
+      --light: #FFF6D6;
+      --sun: #FFC93C;
+      --marigold: #F4A62A;
+      --apricot: #FCD9B0;
+      --pink: #F4B6AE;
+
+      --serif: "Young Serif", Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+      --sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--light);
+      color: var(--indigo);
+      font-family: var(--sans);
+      font-size: 1.125rem;
+      line-height: 1.65;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--indigo); }
+
+    :focus-visible {
+      outline: 3px solid var(--indigo);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Hero and sunrise */
+    header {
+      position: relative;
+      min-height: 88vh;
+      min-height: 88svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 0 4rem;
+      isolation: isolate;
+    }
+
+    .sun {
+      position: absolute;
+      z-index: -1;
+      left: 50%;
+      top: 44%;
+      width: min(125vw, 60rem);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at center,
+        var(--sun) 0%,
+        rgba(255, 201, 60, 0.85) 18%,
+        rgba(252, 217, 176, 0.9) 36%,
+        rgba(244, 182, 174, 0.45) 54%,
+        rgba(255, 246, 214, 0) 70%
+      );
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: rise 2.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+
+    @keyframes rise {
+      from {
+        transform: translate(-50%, -22%) scale(0.92);
+        opacity: 0.35;
+        filter: saturate(0.7) brightness(0.96);
+      }
+      to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        filter: none;
+      }
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2.4rem, 7vw, 4.6rem);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin: 0 auto 1.5rem;
+      max-width: 14ch;
+      text-wrap: balance;
+    }
+
+    .subhead {
+      font-size: clamp(1.125rem, 2.4vw, 1.3rem);
+      max-width: 34rem;
+      margin: 0 auto 2.25rem;
+      text-wrap: pretty;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--sun);
+      color: var(--indigo);
+      font-weight: 600;
+      font-size: 1.0625rem;
+      text-decoration: none;
+      border-radius: 999px;
+      box-shadow: inset 0 0 0 1.5px rgba(46, 42, 79, 0.18);
+      transition: background-color 0.2s ease;
+    }
+
+    .button:hover { background: var(--marigold); }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.875rem 1rem;
+    }
+
+    .button-secondary {
+      background: transparent;
+      box-shadow: inset 0 0 0 1.5px var(--indigo);
+    }
+
+    .button-secondary:hover { background: rgba(255, 201, 60, 0.5); }
+
+    /* Sections */
+    section { padding: 4.5rem 0; }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      line-height: 1.25;
+      margin: 0 0 1.25rem;
+    }
+
+    p { margin: 0 auto; max-width: 36rem; }
+
+    .name p { font-size: clamp(1.125rem, 2.2vw, 1.25rem); }
+
+    .what {
+      background: linear-gradient(to bottom, rgba(252, 217, 176, 0), rgba(252, 217, 176, 0.45) 20%, rgba(252, 217, 176, 0.45) 80%, rgba(252, 217, 176, 0));
+    }
+
+    .what .wrap { max-width: 64rem; }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .pillars h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.6rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .pillars p { max-width: 20rem; }
+
+    .events h2 { margin-bottom: 2rem; }
+
+    .event + .event { margin-top: 3rem; }
+
+    .event h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 1.25;
+      margin: 0 0 0.5rem;
+    }
+
+    .event-when {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .event .button { margin-top: 1.5rem; }
+
+    .contact p { margin-bottom: 1rem; }
+
+    .email {
+      display: inline-block;
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 5vw, 2.6rem);
+      line-height: 1.2;
+      text-decoration: underline;
+      text-decoration-color: var(--marigold);
+      text-decoration-thickness: 3px;
+      text-underline-offset: 0.2em;
+      overflow-wrap: break-word;
+      transition: text-decoration-color 0.2s ease;
+    }
+
+    .email:hover { text-decoration-color: var(--indigo); }
+
+    footer {
+      padding: 3rem 0 3.5rem;
+      font-size: 0.95rem;
+    }
+
+    footer p { margin: 0.2rem auto; }
+
+    @media (max-width: 720px) {
+      header { padding: 4rem 0 3rem; }
+      section { padding: 3.5rem 0; }
+      .pillars { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sun { animation: none; }
+      .button, .email { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="sun" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1>Whatever we build, people belong in the room.</h1>
+      <p class="subhead">Humanity in the Room helps people and organizations use AI in ways that put humans first, through gatherings, education, and hands-on advising.</p>
+      <div class="actions">
+        <a class="button" href="mailto:hello@humanityintheroom.org">Email us</a>
+        <a class="button button-secondary" href="https://forms.gle/5RQhZYpojR7sqf7u8">Join the community</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="name" aria-labelledby="name-heading">
+      <div class="wrap">
+        <h2 id="name-heading">The name</h2>
+        <p>In AI, "human in the loop" means a person checks the machine's work. We think people deserve more than that. They should be in the room when the decisions get made: what gets built, who it's for, and who it might hurt.</p>
+      </div>
+    </section>
+
+    <section class="what" aria-labelledby="what-heading">
+      <div class="wrap">
+        <h2 id="what-heading">What we do</h2>
+        <div class="pillars">
+          <div>
+            <h3>Gather.</h3>
+            <p>Rooms where builders, nonprofits, funders, and the curious actually talk to each other.</p>
+          </div>
+          <div>
+            <h3>Teach.</h3>
+            <p>Practical, honest AI education, including the ethics and the risks.</p>
+          </div>
+          <div>
+            <h3>Advise.</h3>
+            <p>Hands-on support for organizations figuring out how AI fits their mission.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="events" id="events" aria-labelledby="events-heading">
+      <div class="wrap">
+        <h2 id="events-heading">Upcoming events</h2>
+        <!-- One <article> per event. data-ends is when it should drop off the page. -->
+        <article class="event" data-ends="2026-10-21T19:30:00-04:00">
+          <h3>AI for Good Walk</h3>
+          <p class="event-when">
+            <time datetime="2026-10-21T17:30-04:00">Wednesday, October 21, 5:30 to 7:30 pm</time><br>
+            Pier 57, New York
+          </p>
+          <p>A sunset walk along Manhattan's west side. We stop three times to hear from people working on AI and philanthropy, AI and climate, and how we evaluate AI systems, and we switch walking partners in between. Rain location is Pier 57.</p>
+          <a class="button button-secondary" href="https://luma.com/y2yl4ut3">Register on Luma</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" aria-labelledby="contact-heading">
+      <div class="wrap">
+        <h2 id="contact-heading">Get in touch</h2>
+        <p>Want to work with us, partner, or just learn more?</p>
+        <a class="email" href="mailto:hello@humanityintheroom.org">hello<wbr>@humanityintheroom.org</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Founded by Angela Ng and Paulina Munoz</p>
+      <p>Formerly AI for Good NYC</p>
+      <p>&copy; 2026 Humanity in the Room</p>
+    </div>
+  </footer>
+  <script>
+    // Hide events that have ended, and the whole section if none are left.
+    (function () {
+      var now = Date.now();
+      document.querySelectorAll(".event[data-ends]").forEach(function (el) {
+        if (Date.parse(el.dataset.ends) < now) el.remove();
+      });
+      if (!document.querySelector(".event")) document.getElementById("events").remove();
+    })();
+  </script>
+</body>
+</html>
