@@ -8,7 +8,7 @@
   <title>Humanity in the Room</title>
   <link rel="canonical" href="https://humanityintheroom.org/">
   <meta name="description" content="Humanity in the Room helps people and organizations use AI in ways that put humans first, through gatherings, education, and advising.">
-  <meta name="theme-color" content="#FFC93C">
+  <meta name="theme-color" content="#FBE0BE">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://humanityintheroom.org/">
@@ -18,29 +18,34 @@
   <meta property="og:image" content="https://humanityintheroom.org/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Whatever we build, people belong in the room. Humanity in the Room, over a soft yellow sunrise.">
+  <meta property="og:image:alt" content="Whatever we build, people belong in the room. Humanity in the Room, with a ring of eight dots around a rising sun.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Humanity in the Room">
   <meta name="twitter:description" content="Whatever we build, people belong in the room.">
   <meta name="twitter:image" content="https://humanityintheroom.org/og-image.png">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Young+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --indigo: #2E2A4F;
-      --light: #FFF6D6;
+      --surface: #FBE0BE;
+      --surface-2: #F6BA92;
+      --ink: #8F0A0A;
+      --ink-deep: #6F0707;
+      --ink-strong: #1C1210;
+      --ink-muted: #6B4A3A;
+      --vermilion: #E74010;
       --sun: #FFC93C;
-      --marigold: #F4A62A;
-      --apricot: #FCD9B0;
-      --pink: #F4B6AE;
+      --ring-1: #F28C00;
+      --ring-3: #E24A12;
 
-      --serif: "Young Serif", Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
-      --sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --display: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -49,8 +54,8 @@
 
     body {
       margin: 0;
-      background: var(--light);
-      color: var(--indigo);
+      background: var(--surface);
+      color: var(--ink-strong);
       font-family: var(--sans);
       font-size: 1.125rem;
       line-height: 1.65;
@@ -58,10 +63,10 @@
       overflow-x: hidden;
     }
 
-    a { color: var(--indigo); }
+    a { color: var(--ink); }
 
     :focus-visible {
-      outline: 3px solid var(--indigo);
+      outline: 3px solid var(--ink);
       outline-offset: 4px;
       border-radius: 4px;
     }
@@ -95,11 +100,11 @@
       border-radius: 50%;
       background: radial-gradient(
         circle at center,
-        var(--sun) 0%,
-        rgba(255, 201, 60, 0.85) 18%,
-        rgba(252, 217, 176, 0.9) 36%,
-        rgba(244, 182, 174, 0.45) 54%,
-        rgba(255, 246, 214, 0) 70%
+        rgba(255, 201, 60, 0.75) 0%,
+        rgba(255, 201, 60, 0.5) 18%,
+        rgba(246, 186, 146, 0.6) 38%,
+        rgba(246, 186, 146, 0.25) 54%,
+        rgba(251, 224, 190, 0) 70%
       );
       transform: translate(-50%, -50%);
       pointer-events: none;
@@ -107,28 +112,36 @@
     }
 
     @keyframes rise {
-      from {
-        transform: translate(-50%, -22%) scale(0.92);
-        opacity: 0.35;
-        filter: saturate(0.7) brightness(0.96);
-      }
-      to {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-        filter: none;
-      }
+      from { transform: translate(-50%, -22%) scale(0.92); opacity: 0.35; filter: saturate(0.7) brightness(0.96); }
+      to   { transform: translate(-50%, -50%) scale(1); opacity: 1; filter: none; }
+    }
+
+    .mark {
+      display: block;
+      width: 104px;
+      height: 104px;
+      margin: 0 auto 1.75rem;
+      animation: lift 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+
+    @keyframes lift {
+      from { transform: translateY(28px); opacity: 0; }
+      to   { transform: none; opacity: 1; }
     }
 
     h1 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(2.4rem, 7vw, 4.6rem);
-      line-height: 1.12;
-      letter-spacing: -0.01em;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.6rem, 8vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      color: var(--ink);
       margin: 0 auto 1.5rem;
-      max-width: 14ch;
+      max-width: 16ch;
       text-wrap: balance;
     }
+
+    .hl { color: var(--vermilion); }
 
     .subhead {
       font-size: clamp(1.125rem, 2.4vw, 1.3rem);
@@ -140,17 +153,15 @@
     .button {
       display: inline-block;
       padding: 0.9rem 2rem;
-      background: var(--sun);
-      color: var(--indigo);
-      font-weight: 600;
+      background: var(--ink);
+      color: var(--surface);
+      font-weight: 700;
       font-size: 1.0625rem;
       text-decoration: none;
       border-radius: 999px;
-      box-shadow: inset 0 0 0 1.5px rgba(46, 42, 79, 0.18);
       transition: background-color 0.2s ease;
     }
-
-    .button:hover { background: var(--marigold); }
+    .button:hover { background: var(--ink-deep); }
 
     .actions {
       display: flex;
@@ -161,19 +172,21 @@
 
     .button-secondary {
       background: transparent;
-      box-shadow: inset 0 0 0 1.5px var(--indigo);
+      color: var(--ink);
+      box-shadow: inset 0 0 0 2px var(--ink);
     }
-
-    .button-secondary:hover { background: rgba(255, 201, 60, 0.5); }
+    .button-secondary:hover { background: rgba(255, 201, 60, 0.6); }
 
     /* Sections */
     section { padding: 4.5rem 0; }
 
     h2 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(1.6rem, 4vw, 2.1rem);
-      line-height: 1.25;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--ink);
       margin: 0 0 1.25rem;
     }
 
@@ -182,9 +195,12 @@
     .name p { font-size: clamp(1.125rem, 2.2vw, 1.25rem); }
 
     .what {
-      background: linear-gradient(to bottom, rgba(252, 217, 176, 0), rgba(252, 217, 176, 0.45) 20%, rgba(252, 217, 176, 0.45) 80%, rgba(252, 217, 176, 0));
+      background: linear-gradient(to bottom,
+        rgba(246, 186, 146, 0),
+        rgba(246, 186, 146, 0.6) 20%,
+        rgba(246, 186, 146, 0.6) 80%,
+        rgba(246, 186, 146, 0));
     }
-
     .what .wrap { max-width: 64rem; }
 
     .pillars {
@@ -193,75 +209,70 @@
       gap: 2.5rem;
       margin-top: 2rem;
     }
-
     .pillars h3 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 1.6rem;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
       margin: 0 0 0.5rem;
     }
-
     .pillars p { max-width: 20rem; }
 
     .events h2 { margin-bottom: 2rem; }
-
     .event + .event { margin-top: 3rem; }
-
     .event h3 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 1.6rem;
-      line-height: 1.25;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.75rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
       margin: 0 0 0.5rem;
     }
-
-    .event-when {
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
+    .event-when { font-weight: 700; margin-bottom: 1rem; }
     .event .button { margin-top: 1.5rem; }
 
     .contact p { margin-bottom: 1rem; }
-
     .email {
       display: inline-block;
-      font-family: var(--serif);
+      font-family: var(--display);
+      font-weight: 800;
       font-size: clamp(1.25rem, 5vw, 2.6rem);
       line-height: 1.2;
+      letter-spacing: -0.02em;
       text-decoration: underline;
-      text-decoration-color: var(--marigold);
+      text-decoration-color: var(--ring-1);
       text-decoration-thickness: 3px;
       text-underline-offset: 0.2em;
       overflow-wrap: break-word;
       transition: text-decoration-color 0.2s ease;
     }
-
-    .email:hover { text-decoration-color: var(--indigo); }
+    .email:hover { text-decoration-color: var(--ink); }
 
     footer {
       padding: 3rem 0 3.5rem;
       font-size: 0.95rem;
+      color: var(--ink-muted);
     }
-
     footer p { margin: 0.2rem auto; }
-
     footer a {
-      text-decoration-color: var(--marigold);
+      color: var(--ink-muted);
+      text-decoration-color: var(--ring-1);
       text-decoration-thickness: 2px;
       text-underline-offset: 0.2em;
     }
-
-    footer a:hover { text-decoration-color: var(--indigo); }
+    footer a:hover { text-decoration-color: var(--ink); }
 
     @media (max-width: 720px) {
       header { padding: 4rem 0 3rem; }
       section { padding: 3.5rem 0; }
       .pillars { grid-template-columns: 1fr; gap: 2rem; }
+      .mark { width: 84px; height: 84px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .sun { animation: none; }
+      .sun, .mark { animation: none; }
       .button, .email { transition: none; }
     }
   </style>
@@ -270,7 +281,8 @@
   <header>
     <div class="sun" aria-hidden="true"></div>
     <div class="wrap">
-      <h1>Whatever we build, people belong in the room.</h1>
+      <img class="mark" src="ring-mark.svg" alt="" width="104" height="104">
+      <h1>Whatever we build, <span class="hl">people belong</span> in the room.</h1>
       <p class="subhead">Humanity in the Room helps people and organizations use AI in ways that put humans first, through gatherings, education, and hands-on advising.</p>
       <div class="actions">
         <a class="button" href="mailto:hello@humanityintheroom.org">Email us</a>
