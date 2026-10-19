@@ -219,6 +219,24 @@
     }
     .pillars p { max-width: 20rem; }
 
+    .pillars-two {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 44rem;
+      margin-left: auto;
+      margin-right: auto;
+      row-gap: 3rem;
+    }
+
+    .involved p a {
+      text-decoration-color: var(--ring-1);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.2em;
+    }
+
+    .involved p a:hover { text-decoration-color: var(--ink); }
+
+    .newsletter { margin-top: 3rem; font-weight: 500; }
+
     .events h2 { margin-bottom: 2rem; }
     .event + .event { margin-top: 3rem; }
     .event h3 {
@@ -323,15 +341,40 @@
       <div class="wrap">
         <h2 id="events-heading">Upcoming events</h2>
         <!-- One <article> per event. data-ends is when it should drop off the page. -->
-        <article class="event" data-ends="2026-10-21T19:30:00-04:00">
+        <article class="event" data-ends="2026-10-21T18:30:00-04:00">
           <h3>AI for Good Walk</h3>
           <p class="event-when">
-            <time datetime="2026-10-21T17:30-04:00">Wednesday, October 21, 5:30 to 7:30 pm</time><br>
+            <time datetime="2026-10-21T17:00-04:00">Wednesday, October 21, 5:00 to 6:30 pm</time><br>
             Pier 57, New York
           </p>
           <p>A sunset walk along Manhattan's west side. We stop three times to hear from people working on AI and philanthropy, AI and climate, and how we evaluate AI systems, and we switch walking partners in between. Rain location is Pier 57.</p>
           <a class="button button-secondary" href="https://luma.com/y2yl4ut3">Register on Luma</a>
         </article>
+      </div>
+    </section>
+
+    <section class="involved" aria-labelledby="involved-heading">
+      <div class="wrap">
+        <h2 id="involved-heading">Get involved</h2>
+        <div class="pillars pillars-two">
+          <div>
+            <h3>Get featured.</h3>
+            <p>Using AI in a unique way for social good? We'd love to highlight your work. <a href="mailto:hello@humanityintheroom.org">Reach out</a>.</p>
+          </div>
+          <div>
+            <h3>Tell us what you need.</h3>
+            <p>Fill out our short <a href="https://docs.google.com/forms/d/e/1FAIpQLScsDqO61w0vNCeqHKgEIT6rAdyXMq3JY_iF1al0-C-GjzGozA/viewform">community survey</a> so we can shape future programming around it.</p>
+          </div>
+          <div>
+            <h3>Volunteer.</h3>
+            <p>Want to help make these rooms happen? Fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSffIiiMjbB7jM68fGb-PgdO-gq7uoGTBGFZzDkM61R-Ab1mDw/viewform">volunteer form</a>.</p>
+          </div>
+          <div>
+            <h3>Collaborate.</h3>
+            <p>Have an idea to build together? Fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyf7xOgwo7ysEg2k-zhfmgG-uzYjbTuefn8OU7GmmiJfMuFQ/viewform">collaboration form</a>.</p>
+          </div>
+        </div>
+        <p class="newsletter">Read our newsletter on <a href="https://humanityintheroom.substack.com/">Substack</a>.</p>
       </div>
     </section>
 
@@ -348,6 +391,7 @@
     <div class="wrap">
       <p>Founded by <a href="https://www.linkedin.com/in/angelaonwahng">Angela Ng</a> and <a href="https://www.linkedin.com/in/paulina-munoz-celada">Paulina Munoz</a></p>
       <p>Formerly AI for Good NYC</p>
+      <p><a href="https://humanityintheroom.substack.com/">Newsletter on Substack</a></p>
       <p>&copy; 2026 Humanity in the Room</p>
     </div>
   </footer>
