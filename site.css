@@ -48,6 +48,13 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Breathing room above a section when a header link jumps to it. */
+section[id] { scroll-margin-top: 16px; }
+
 body {
   margin: 0;
   background: var(--surface);
@@ -101,6 +108,27 @@ h1, h2, h3 {
   width: var(--logo-w);
   max-width: none;
   margin-left: calc(var(--logo-w) * -0.248);
+}
+
+.top-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.top-nav a {
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.top-nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
 }
 
 /* Buttons */
@@ -273,6 +301,12 @@ h1, h2, h3 {
 }
 
 .foot-ring { width: 40px; flex: none; }
+
+@media (max-width: 860px) {
+  .top { flex-wrap: wrap; }
+  .top-nav { flex-basis: 100%; }
+  .top-nav ul { gap: 6px 18px; }
+}
 
 @media (max-width: 700px) {
   .name-grid,
