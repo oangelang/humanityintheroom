@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Humanity in the Room</title>
   <link rel="canonical" href="https://humanityintheroom.org/">
-  <meta name="description" content="Humanity in the Room helps people and organizations use AI in ways that put humans first, through gatherings, education, and advising.">
-  <meta name="theme-color" content="#FBE0BE">
+  <meta name="description" content="Humanity in the Room helps people and organizations use AI in ways that put humans first, through gatherings, education and hands-on advising.">
+  <meta name="theme-color" content="#FBE0BE" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#8F0A0A" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://humanityintheroom.org/">
@@ -26,384 +28,198 @@
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --surface: #FBE0BE;
-      --surface-2: #F6BA92;
-      --ink: #8F0A0A;
-      --ink-deep: #6F0707;
-      --ink-strong: #1C1210;
-      --ink-muted: #6B4A3A;
-      --vermilion: #E74010;
-      --sun: #FFC93C;
-      --ring-1: #F28C00;
-      --ring-3: #E24A12;
-
-      --display: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { -webkit-text-size-adjust: 100%; }
-
-    body {
-      margin: 0;
-      background: var(--surface);
-      color: var(--ink-strong);
-      font-family: var(--sans);
-      font-size: 1.125rem;
-      line-height: 1.65;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    a { color: var(--ink); }
-
-    :focus-visible {
-      outline: 3px solid var(--ink);
-      outline-offset: 4px;
-      border-radius: 4px;
-    }
-
-    .wrap {
-      width: 100%;
-      max-width: 44rem;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* Hero and sunrise */
-    header {
-      position: relative;
-      min-height: 88vh;
-      min-height: 88svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 5rem 0 4rem;
-      isolation: isolate;
-    }
-
-    .sun {
-      position: absolute;
-      z-index: -1;
-      left: 50%;
-      top: 44%;
-      width: min(125vw, 60rem);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle at center,
-        rgba(255, 201, 60, 0.75) 0%,
-        rgba(255, 201, 60, 0.5) 18%,
-        rgba(246, 186, 146, 0.6) 38%,
-        rgba(246, 186, 146, 0.25) 54%,
-        rgba(251, 224, 190, 0) 70%
-      );
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      animation: rise 2.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-    }
-
-    @keyframes rise {
-      from { transform: translate(-50%, -22%) scale(0.92); opacity: 0.35; filter: saturate(0.7) brightness(0.96); }
-      to   { transform: translate(-50%, -50%) scale(1); opacity: 1; filter: none; }
-    }
-
-    .mark {
-      display: block;
-      width: 104px;
-      height: 104px;
-      margin: 0 auto 1.75rem;
-      animation: lift 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-    }
-
-    @keyframes lift {
-      from { transform: translateY(28px); opacity: 0; }
-      to   { transform: none; opacity: 1; }
-    }
-
-    h1 {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(2.6rem, 8vw, 5rem);
-      line-height: 1.02;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      margin: 0 auto 1.5rem;
-      max-width: 16ch;
-      text-wrap: balance;
-    }
-
-    .hl { color: var(--vermilion); }
-
-    .subhead {
-      font-size: clamp(1.125rem, 2.4vw, 1.3rem);
-      max-width: 34rem;
-      margin: 0 auto 2.25rem;
-      text-wrap: pretty;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 0.9rem 2rem;
-      background: var(--ink);
-      color: var(--surface);
-      font-weight: 700;
-      font-size: 1.0625rem;
-      text-decoration: none;
-      border-radius: 999px;
-      transition: background-color 0.2s ease;
-    }
-    .button:hover { background: var(--ink-deep); }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.875rem 1rem;
-    }
-
-    .button-secondary {
-      background: transparent;
-      color: var(--ink);
-      box-shadow: inset 0 0 0 2px var(--ink);
-    }
-    .button-secondary:hover { background: rgba(255, 201, 60, 0.6); }
-
-    /* Sections */
-    section { padding: 4.5rem 0; }
-
-    h2 {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(1.9rem, 4.5vw, 2.6rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      margin: 0 0 1.25rem;
-    }
-
-    p { margin: 0 auto; max-width: 36rem; }
-
-    .name p { font-size: clamp(1.125rem, 2.2vw, 1.25rem); }
-
-    .what {
-      background: linear-gradient(to bottom,
-        rgba(246, 186, 146, 0),
-        rgba(246, 186, 146, 0.6) 20%,
-        rgba(246, 186, 146, 0.6) 80%,
-        rgba(246, 186, 146, 0));
-    }
-    .what .wrap { max-width: 64rem; }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-      margin-top: 2rem;
-    }
-    .pillars h3 {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: 1.75rem;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin: 0 0 0.5rem;
-    }
-    .pillars p { max-width: 20rem; }
-
-    .pillars-two {
-      grid-template-columns: repeat(2, 1fr);
-      max-width: 44rem;
-      margin-left: auto;
-      margin-right: auto;
-      row-gap: 3rem;
-    }
-
-    .involved p a {
-      text-decoration-color: var(--ring-1);
-      text-decoration-thickness: 2px;
-      text-underline-offset: 0.2em;
-    }
-
-    .involved p a:hover { text-decoration-color: var(--ink); }
-
-    .newsletter { margin-top: 3rem; font-weight: 500; }
-
-    .events h2 { margin-bottom: 2rem; }
-    .event + .event { margin-top: 3rem; }
-    .event h3 {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: 1.75rem;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin: 0 0 0.5rem;
-    }
-    .event-when { font-weight: 700; margin-bottom: 1rem; }
-    .event .button { margin-top: 1.5rem; }
-
-    .contact p { margin-bottom: 1rem; }
-    .email {
-      display: inline-block;
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(1.25rem, 5vw, 2.6rem);
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      text-decoration: underline;
-      text-decoration-color: var(--ring-1);
-      text-decoration-thickness: 3px;
-      text-underline-offset: 0.2em;
-      overflow-wrap: break-word;
-      transition: text-decoration-color 0.2s ease;
-    }
-    .email:hover { text-decoration-color: var(--ink); }
-
-    footer {
-      padding: 3rem 0 3.5rem;
-      font-size: 0.95rem;
-      color: var(--ink-muted);
-    }
-    footer p { margin: 0.2rem auto; }
-    footer a {
-      color: var(--ink-muted);
-      text-decoration-color: var(--ring-1);
-      text-decoration-thickness: 2px;
-      text-underline-offset: 0.2em;
-    }
-    footer a:hover { text-decoration-color: var(--ink); }
-
-    @media (max-width: 720px) {
-      header { padding: 4rem 0 3rem; }
-      section { padding: 3.5rem 0; }
-      .pillars { grid-template-columns: 1fr; gap: 2rem; }
-      .mark { width: 84px; height: 84px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .sun, .mark { animation: none; }
-      .button, .email { transition: none; }
-    }
-  </style>
+  <link rel="preload" href="fonts/BricolageGrotesque-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/DMSans-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="focus.css">
+  <script src="focus.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="sun" aria-hidden="true"></div>
-    <div class="wrap">
-      <img class="mark" src="ring-mark.svg" alt="" width="104" height="104">
-      <h1>Whatever we build, <span class="hl">people belong</span> in the room.</h1>
-      <p class="subhead">Humanity in the Room helps people and organizations use AI in ways that put humans first, through gatherings, education, and hands-on advising.</p>
-      <div class="actions">
-        <a class="button" href="mailto:hello@humanityintheroom.org">Email us</a>
-        <a class="button button-secondary" href="https://forms.gle/5RQhZYpojR7sqf7u8">Join the community</a>
-      </div>
-    </div>
+  <header class="top">
+    <a class="top-logo" href="#top">
+      <picture>
+        <source srcset="brand/header-dark.svg" media="(prefers-color-scheme: dark)">
+        <img src="brand/header-light.svg" alt="Humanity in the Room" width="1100" height="220">
+      </picture>
+    </a>
+    <a class="top-join" href="https://forms.gle/5RQhZYpojR7sqf7u8">Join the community</a>
   </header>
 
   <main>
-    <section class="name" aria-labelledby="name-heading">
-      <div class="wrap">
+    <section class="hero" id="top">
+      <div class="in">
+        <h1>Whatever we build, people belong in the room.</h1>
+        <p class="sub">Humanity in the Room helps people and organizations use AI in ways that put humans first, through gatherings, education and hands-on advising. We work across climate, health, education and economic mobility.</p>
+        <div class="cta">
+          <a class="btn" href="https://forms.gle/5RQhZYpojR7sqf7u8">Join the community</a>
+          <a class="btn btn-alt" href="mailto:hello@humanityintheroom.org">Email us</a>
+        </div>
+        <picture class="hero-ring">
+          <source srcset="brand/ring-mark-on-dark.svg" media="(prefers-color-scheme: dark)">
+          <img src="brand/ring-mark-on-light.svg" alt="" width="512" height="512">
+        </picture>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="name-heading">
+      <div class="in name-grid">
         <h2 id="name-heading">The name</h2>
-        <p>In AI, "human in the loop" means a person checks the machine's work. We think people deserve more than that. They should be in the room when the decisions get made: what gets built, who it's for, and who it might hurt.</p>
-      </div>
-    </section>
-
-    <section class="what" aria-labelledby="what-heading">
-      <div class="wrap">
-        <h2 id="what-heading">What we do</h2>
-        <div class="pillars">
-          <div>
-            <h3>Gather.</h3>
-            <p>Rooms where builders, nonprofits, funders, and the curious actually talk to each other.</p>
-          </div>
-          <div>
-            <h3>Teach.</h3>
-            <p>Practical, honest AI education, including the ethics and the risks.</p>
-          </div>
-          <div>
-            <h3>Advise.</h3>
-            <p>Hands-on support for organizations figuring out how AI fits their mission.</p>
-          </div>
+        <div>
+          <p>In “human in the loop,” a person only checks a machine’s work. We hold that people should help decide what gets built, who it is for and who it might harm.</p>
+          <p class="goal">AI is a tool. Human wellbeing and development are the goal. We keep both in view.</p>
+          <p>Formerly AI for Good NYC.</p>
         </div>
       </div>
     </section>
 
-    <section class="events" id="events" aria-labelledby="events-heading">
-      <div class="wrap">
-        <h2 id="events-heading">Upcoming events</h2>
-        <!-- One <article> per event. data-ends is when it should drop off the page. -->
-        <article class="event" data-ends="2026-10-21T18:30:00-04:00">
-          <h3>AI for Good Walk</h3>
-          <p class="event-when">
-            <time datetime="2026-10-21T17:00-04:00">Wednesday, October 21, 5:00 to 6:30 pm</time><br>
-            Pier 57, New York
-          </p>
-          <p>A sunset walk along Manhattan's west side. We stop three times to hear from people working on AI and philanthropy, AI and climate, and how we evaluate AI systems, and we switch walking partners in between. Rain location is Pier 57.</p>
-          <a class="button button-secondary" href="https://luma.com/y2yl4ut3">Register on Luma</a>
-        </article>
-      </div>
-    </section>
+    <section class="sec focus" id="focus" aria-labelledby="focus-heading">
+      <div class="in">
+        <h2 id="focus-heading">Where we focus</h2>
 
-    <section class="involved" aria-labelledby="involved-heading">
-      <div class="wrap">
-        <h2 id="involved-heading">Get involved</h2>
-        <div class="pillars pillars-two">
-          <div>
-            <h3>Get featured.</h3>
-            <p>Using AI in a unique way for social good? We'd love to highlight your work. <a href="mailto:hello@humanityintheroom.org">Reach out</a>.</p>
+        <!-- Filled in by focus.js. Hidden when JavaScript is off. -->
+        <div class="focus-live" hidden>
+          <p class="lede">Pick an area, then slide to see both sides.</p>
+          <div class="tabs" role="group" aria-label="Focus area"></div>
+          <div class="ask" aria-live="polite">
+            <p class="question"></p>
+            <p class="answer">Both. Slide to see each side.</p>
           </div>
-          <div>
-            <h3>Tell us what you need.</h3>
-            <p>Fill out our short <a href="https://docs.google.com/forms/d/e/1FAIpQLScsDqO61w0vNCeqHKgEIT6rAdyXMq3JY_iF1al0-C-GjzGozA/viewform">community survey</a> so we can shape future programming around it.</p>
+          <div class="stage">
+            <div class="layer"><canvas class="scene" aria-hidden="true"></canvas></div>
+            <div class="layer layer-code"><canvas class="code" aria-hidden="true"></canvas></div>
+
+            <div class="copy copy-good">
+              <p class="tag"><span class="mark">What AI can do</span></p>
+              <p class="pillar"><span class="mark" data-slot="name"></span></p>
+              <p class="body"><span class="mark" data-slot="good"></span></p>
+            </div>
+            <div class="copy copy-watch is-off">
+              <p class="tag"><span class="mark">What we watch for</span></p>
+              <p class="pillar"><span class="mark" data-slot="name"></span></p>
+              <p class="body"><span class="mark" data-slot="watch"></span></p>
+            </div>
+
+            <span class="end end-l" aria-hidden="true">What AI can do</span>
+            <span class="end end-r" aria-hidden="true">What we watch for</span>
+
+            <div class="handle" role="slider" tabindex="0"
+                 aria-label="Compare what AI can do with what we watch for"
+                 aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"
+                 aria-valuetext="Mostly what AI can do">
+              <span class="knob" aria-hidden="true">
+                <svg width="28" height="16" viewBox="0 0 28 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2 3 8l6 6"/><path d="M19 2l6 6-6 6"/></svg>
+              </span>
+              <span class="cue" aria-hidden="true">Slide</span>
+            </div>
           </div>
-          <div>
-            <h3>Volunteer.</h3>
-            <p>Want to help make these rooms happen? Fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSffIiiMjbB7jM68fGb-PgdO-gq7uoGTBGFZzDkM61R-Ab1mDw/viewform">volunteer form</a>.</p>
-          </div>
-          <div>
-            <h3>Collaborate.</h3>
-            <p>Have an idea to build together? Fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyf7xOgwo7ysEg2k-zhfmgG-uzYjbTuefn8OU7GmmiJfMuFQ/viewform">collaboration form</a>.</p>
-          </div>
+          <p class="hint">Drag the line, tap anywhere on the scene or use the arrow keys.</p>
         </div>
-        <p class="newsletter">Read our newsletter on <a href="https://humanityintheroom.substack.com/">Substack</a>.</p>
+
+        <!--
+          The focus areas. This is the one place to edit the copy: focus.js reads
+          these cards to build the slider, and visitors without JavaScript see them as is.
+          Keep the order: Climate, Health, Education, Economic mobility (each has its own drawn scene).
+        -->
+        <div class="focus-cards">
+          <article class="focus-card">
+            <h3 data-field="name">Climate</h3>
+            <p class="focus-q" data-field="q">Does AI help the climate or hurt it?</p>
+            <h4>What AI can do</h4>
+            <p data-field="good">AI can help communities forecast floods, cut energy waste, and track a changing planet.</p>
+            <h4>What we watch for</h4>
+            <p data-field="watch">AI also uses real water and power, and the costs land on real places. We ask who pays.</p>
+          </article>
+          <article class="focus-card">
+            <h3 data-field="name">Health</h3>
+            <p class="focus-q" data-field="q">Will AI make care better, or leave people out?</p>
+            <h4>What AI can do</h4>
+            <p data-field="good">AI can stretch scarce clinicians, catch disease earlier, and reach patients far from a hospital.</p>
+            <h4>What we watch for</h4>
+            <p data-field="watch">It can also carry bias, leak private data, and stand in for human care where people need it most.</p>
+          </article>
+          <article class="focus-card">
+            <h3 data-field="name">Education</h3>
+            <p class="focus-q" data-field="q">Does AI help people learn, or stop them thinking?</p>
+            <h4>What AI can do</h4>
+            <p data-field="good">AI can tutor, translate, and open doors for learners who never had one.</p>
+            <h4>What we watch for</h4>
+            <p data-field="watch">It can also let people stop thinking for themselves. We teach people to use it without losing that.</p>
+          </article>
+          <article class="focus-card">
+            <h3 data-field="name">Economic mobility</h3>
+            <p class="focus-q" data-field="q">Does AI open doors or close them?</p>
+            <h4>What AI can do</h4>
+            <p data-field="good">AI can help someone start a business, write a résumé, or get through a benefits system.</p>
+            <h4>What we watch for</h4>
+            <p data-field="watch">It can also hollow out entry-level work and widen the gap for people already behind.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="contact" aria-labelledby="contact-heading">
-      <div class="wrap">
-        <h2 id="contact-heading">Get in touch</h2>
-        <p>Want to work with us, partner, or just learn more?</p>
-        <a class="email" href="mailto:hello@humanityintheroom.org">hello<wbr>@humanityintheroom.org</a>
+    <div class="blockwrap">
+      <div class="in">
+        <section class="block block-peach" aria-labelledby="do-heading">
+          <h2 id="do-heading">What we do</h2>
+          <div class="do-grid">
+            <div class="do"><h3>Gather.</h3><p>Events where builders, nonprofits, funders and others talk.</p></div>
+            <div class="do"><h3>Teach.</h3><p>Practical, honest AI education, including ethics and risks. We train teams to build their own tools and manage their own data, so the skills stay when we leave.</p></div>
+            <div class="do"><h3>Advise.</h3><p>Hands-on support for organizations.</p></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="sec who" aria-labelledby="who-heading">
+      <div class="in">
+        <h2 id="who-heading">Who it’s for</h2>
+        <p>Nonprofit leaders. Foundation and institutional decision-makers who worry about AI risk and want to talk to people who study it. Tech workers moving into tech for good. Anyone who wants AI to serve people.</p>
+        <p class="nums">Nine events so far. More than 2,000 people in the community.</p>
       </div>
     </section>
+
+    <section class="sec news" aria-labelledby="news-heading">
+      <div class="in">
+        <h2 id="news-heading">Read our newsletter</h2>
+        <div class="card">
+          <h3>Notes and themes on AI and philanthropy</h3>
+          <p>Our newsletter on Substack shares news and notes on AI and philanthropy.</p>
+          <a class="btn" href="https://humanityintheroom.substack.com/">Read on Substack</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="blockwrap">
+      <div class="in">
+        <section class="block block-red" aria-labelledby="involved-heading">
+          <h2 id="involved-heading">Get involved</h2>
+          <div class="involve">
+            <div>
+              <h3>Join the community</h3>
+              <p>Members share news, ask for help and find each other, with a channel for each focus area.</p>
+              <a class="btn" href="https://forms.gle/5RQhZYpojR7sqf7u8">Join the community</a>
+            </div>
+            <div>
+              <h3>Work with us</h3>
+              <p>Want to be featured, volunteer, collaborate or partner? Email us and tell us what you have in mind.</p>
+              <a class="btn btn-ghost" href="mailto:hello@humanityintheroom.org">hello@humanityintheroom.org</a>
+              <p class="forms">Prefer a form? Tell us what you need in our <a href="https://docs.google.com/forms/d/e/1FAIpQLScsDqO61w0vNCeqHKgEIT6rAdyXMq3JY_iF1al0-C-GjzGozA/viewform">community survey</a>, or sign up to <a href="https://docs.google.com/forms/d/e/1FAIpQLSffIiiMjbB7jM68fGb-PgdO-gq7uoGTBGFZzDkM61R-Ab1mDw/viewform">volunteer</a> or <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyf7xOgwo7ysEg2k-zhfmgG-uzYjbTuefn8OU7GmmiJfMuFQ/viewform">collaborate</a>.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <p>Founded by <a href="https://www.linkedin.com/in/angelaonwahng">Angela Ng</a> and <a href="https://www.linkedin.com/in/paulina-munoz-celada">Paulina Munoz</a></p>
-      <p>Formerly AI for Good NYC</p>
-      <p><a href="https://humanityintheroom.substack.com/">Newsletter on Substack</a></p>
+  <footer class="foot">
+    <div>
+      <p>Founded by <a href="https://www.linkedin.com/in/angelaonwahng">Angela Ng</a> and <a href="https://www.linkedin.com/in/paulina-munoz-celada">Paulina Munoz</a>. Formerly AI for Good NYC.</p>
       <p>&copy; 2026 Humanity in the Room</p>
     </div>
+    <picture class="foot-ring">
+      <source srcset="brand/ring-mark-on-dark.svg" media="(prefers-color-scheme: dark)">
+      <img src="brand/ring-mark-on-light.svg" alt="" width="512" height="512">
+    </picture>
   </footer>
-  <script>
-    // Hide events that have ended, and the whole section if none are left.
-    (function () {
-      var now = Date.now();
-      document.querySelectorAll(".event[data-ends]").forEach(function (el) {
-        if (Date.parse(el.dataset.ends) < now) el.remove();
-      });
-      if (!document.querySelector(".event")) document.getElementById("events").remove();
-    })();
-  </script>
 </body>
 </html>

@@ -1,0 +1,217 @@
+/* "Where we focus" slider. The scene colors are fixed brand colors, so they do not change in the dark theme. */
+
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+
+.tabs button {
+  font: 600 15px/1 var(--sans);
+  padding: 12px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+
+.ask { margin: 0 0 14px; }
+
+.question {
+  margin: 0 0 6px;
+  font: 800 clamp(28px, 4.4vw, 40px)/1.02 var(--display);
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.answer { margin: 0; color: var(--ink-muted); }
+
+.stage {
+  --pad: clamp(16px, 3.5vw, 48px);
+  position: relative;
+  height: clamp(560px, 80vh, 760px);
+  border-radius: 28px;
+  overflow: hidden;
+  background: #8F0A0A;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  cursor: ew-resize;
+}
+
+.layer { position: absolute; inset: 0; }
+.layer canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.layer-code { clip-path: inset(0 0 0 85%); }
+.layer-code::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(143, 10, 10, .5) 0%, rgba(143, 10, 10, .3) 45%, rgba(143, 10, 10, 0) 75%);
+  pointer-events: none;
+}
+
+.copy {
+  position: absolute;
+  z-index: 2;
+  top: clamp(24px, 5.5vh, 56px);
+  width: calc(50% - var(--pad) - 14px);
+  color: #8F0A0A;
+  transition: opacity .2s ease;
+}
+
+.copy.is-off { opacity: 0; pointer-events: none; }
+.copy-good { left: var(--pad); }
+.copy-watch { right: var(--pad); }
+
+.tag { margin: 0 0 8px; font: 500 13px/1.3 var(--sans); }
+
+.pillar {
+  margin: 0 0 12px;
+  font: 800 clamp(30px, 5vw, 48px)/1.1 var(--display);
+  letter-spacing: -0.03em;
+}
+
+.body { margin: 0; font: 400 clamp(15px, 2vw, 18px)/1.65 var(--sans); }
+
+.mark {
+  background: #FFF1DD;
+  color: #8F0A0A;
+  padding: 0.1em 0.4em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.pillar .mark { padding: 0 0.22em; }
+.tag .mark { background: #F6BA92; }
+.copy-watch .mark { background: #FFC93C; }
+.copy-watch .tag .mark { background: #F6BA92; }
+
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 85%;
+  width: 48px;
+  margin-left: -24px;
+  z-index: 5;
+  cursor: ew-resize;
+  outline: none;
+  touch-action: pan-y;
+}
+
+.handle::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  margin-left: -2px;
+  background: linear-gradient(to right, #8F0A0A 0 1px, #FFF1DD 1px 3px, #8F0A0A 3px 4px);
+}
+
+.knob {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  border-radius: 50%;
+  background: #FFF1DD;
+  color: #8F0A0A;
+  border: 2px solid #8F0A0A;
+  display: grid;
+  place-items: center;
+}
+
+.knob::after {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  border: 3px solid #FFF1DD;
+  opacity: 0;
+}
+
+.stage:not(.touched) .knob::after { animation: pulse 1.8s ease-out infinite; }
+
+@keyframes pulse {
+  0% { transform: scale(.85); opacity: .95; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.handle:focus-visible .knob { outline: 3px solid #FFC93C; outline-offset: 3px; }
+
+.cue {
+  position: absolute;
+  left: 50%;
+  top: calc(58% + 42px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: #FFF1DD;
+  color: #8F0A0A;
+  border: 2px solid #8F0A0A;
+  font: 600 14px/1 var(--sans);
+  padding: 8px 12px;
+  border-radius: 16px;
+  transition: opacity .3s ease;
+}
+
+.stage.touched .cue { opacity: 0; }
+
+.end {
+  position: absolute;
+  bottom: 14px;
+  z-index: 4;
+  pointer-events: none;
+  font: 600 13px/1 var(--sans);
+  padding: 9px 12px;
+  border-radius: 16px;
+  border: 2px solid #8F0A0A;
+  color: #8F0A0A;
+}
+
+.end-l { left: var(--pad); background: #FFF1DD; }
+.end-r { right: var(--pad); background: #FFC93C; }
+
+.hint { margin: 12px 2px 0; color: var(--ink-muted); font: 500 13px/1.4 var(--sans); }
+
+/* Narrow stages: one text block at a time, full width, swapping at the midpoint. */
+.stage.is-compact .copy { width: auto; }
+.stage.is-compact .copy-good { right: calc(15% + 12px); }
+.stage.is-compact .copy-watch { left: calc(15% + 12px); }
+.stage.is-compact .pillar { font-size: 28px; }
+.stage.is-compact .body { font-size: 15px; line-height: 1.6; }
+
+/* No-JavaScript version: each area as a plain card. */
+.focus-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.focus-card {
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: 16px;
+  background: var(--card);
+  border: 2px solid var(--border);
+}
+
+.focus-card h3 { font-size: clamp(24px, 3vw, 32px); line-height: 1.05; margin-bottom: 8px; }
+.focus-card .focus-q { margin: 0 0 16px; font-weight: 600; }
+.focus-card h4 { margin: 14px 0 4px; font: 600 13px/1.3 var(--sans); color: var(--ink-muted); }
+.focus-card p { margin: 0; }
+
+.focus-cards[hidden],
+.focus-live[hidden] { display: none; }
+
+@media (max-width: 700px) {
+  .focus-cards { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy, .cue { transition: none; }
+  .stage:not(.touched) .knob::after { animation: none; }
+}
