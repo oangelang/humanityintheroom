@@ -87,20 +87,20 @@ h1, h2, h3 {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  max-width: calc(1100px + 2 * var(--sp));
+  margin: 0 auto;
   padding: 20px var(--sp) 0;
 }
 
 .top-logo { display: block; flex: none; }
-.top-logo img { width: clamp(275px, 34vw, 360px); }
 
-.top-join {
-  font-weight: 600;
-  font-size: 15px;
-  white-space: nowrap;
-}
-
-@media (max-width: 560px) {
-  .top-join { display: none; }
+/* The official header file has empty space before the ring (about 24.8% of its width).
+   Pull the image left by that much so the ring lines up with the page text. */
+.top-logo img {
+  --logo-w: clamp(275px, 34vw, 360px);
+  width: var(--logo-w);
+  max-width: none;
+  margin-left: calc(var(--logo-w) * -0.248);
 }
 
 /* Buttons */
